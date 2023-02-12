@@ -14,7 +14,7 @@ const userSchema = new mongoose.Schema({
     email: { type: String, required: true },
     password: { type: String, required: true },
     profilePhoto: { type: String },
-    contact: { type: String },
+    phoneNumber: { type: String },
 });
 
 export const userModel = mongoose.model("Users", userSchema);

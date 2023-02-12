@@ -3,14 +3,13 @@ import "./Home.css";
 import AddItem from "../Admin-portal/addItem/addItem";
 
 const Home = () => {
-  const GetCurrentUser = () => {
-    const [user, setUser] = useState(" ");
-  };
-  const loggeduser = GetCurrentUser();
+  // const GetCurrentUser = () => {
+  //   const [user, setUser] = useState(" ");
+  // };
+  // const loggeduser = GetCurrentUser();
 
   return (
     <div>
-      <AddItem />
     </div>
   );
 };

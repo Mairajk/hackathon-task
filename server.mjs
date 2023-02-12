@@ -48,21 +48,73 @@ app.use(
 app.post("/api/v1/signup", async (request, response) => {
   let body = request.body;
 
-  if (!body.firstName || !body.lastName || !body.email || !body.password) {
+  if (!body.firstName || !body.phoneNumber || !body.email || !body.password) {
     response.status(400).send({
       message: `required fields missing, example request : 
             {
-                firstName : 'Mairaj',
-                lastName : 'Khan',
+               fullName : 'Mairaj Khan',
+                phoneNumber : '+92311*******',
                 email : 'abc@123.com',
                 password : '*******'
             }`,
     });
     return;
   }
-  console.log('=======================>');
-  signupController(request, response);
-  console.log('second =================>');
+  // console.log('=======================>');
+
+  body.email = body.email.toLowerCase();
+
+
+
+  await userModel.findOne({ email: body.email }, (err, user) => {
+    if (!err) {
+      console.log("user ===> ", user);
+
+      if (user) {
+        console.log("user exist already ===>", user);
+
+        response.status(400).send({
+          message: "this email is already exist please try a different one.",
+        });
+        return;
+      } else {
+        stringToHash(body.password).then((hashedPassword) => {
+          userModel.create(
+            {
+              fullName: body.fullName,
+              phoneNumber: body.phoneNumber,
+              email: body.email,
+              password: hashedPassword,
+            },
+            (err, user) => {
+              if (!err) {
+                console.log("user created ==> ", user);
+
+                response.status(201).send({
+                  message: "user created successfully",
+                  data: user,
+                });
+              } else {
+                console.log("server error: ", err);
+                response.status(500).send({
+                  message: "server error",
+                  error: err,
+                });
+              }
+            }
+          );
+        });
+      }
+    } else {
+      console.log("error ===> ", err);
+      response.status(500).send({
+        message: "server error",
+        error: err,
+      });
+      return;
+    }
+  });
+  // console.log('second =================>');
 });
 //////////////////////////////////////////////////////////////////
 
