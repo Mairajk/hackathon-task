@@ -1,10 +1,10 @@
-.Addprod-container {
+/* .Addcategory-container {
   display: flex;
   justify-content: center;
   padding: 40px;
 }
 
-.addprod-form {
+.Addcategory-form {
   display: flex;
   flex-direction: column;
   padding: 0px 10px;
@@ -13,19 +13,19 @@
   width: 600px;
 }
 
-.addprod-form p {
+.Addcategory-form p {
   font-size: 25px;
   margin: 0;
 }
 
-.addprod-form label {
+.Addcategory-form label {
   padding: 0;
   margin-top: 5px;
   font-weight: 700;
   font-size: 12px;
 }
 
-.addprod-form input {
+.Addcategory-form input {
   margin: 2px 0px;
   border-radius: 5px;
   padding: 5px;
@@ -33,7 +33,7 @@
   font-size: 13px;
 }
 
-.addprod-form textarea {
+.Addcategory-form textarea {
   margin: 2px 0px;
   border-radius: 5px;
   padding: 5px;
@@ -41,12 +41,12 @@
   font-size: 13px;
 }
 
-.addprod-form input:focus {
+.Addcategory-form input:focus {
   outline: 2px solid orange;
   border: none;
 }
 
-.addprod-form button {
+.Addcategory-form button {
   background-color: rgb(255, 176, 29);
   margin: 10px 0px;
   border: none;
@@ -57,7 +57,7 @@
   padding: 5px;
 }
 
-.addprod-form button:hover {
+.Addcategory-form button:hover {
   background-color: black;
   color: rgb(255, 176, 29);
   cursor: pointer;
@@ -80,4 +80,4 @@
   padding: 10px 0px;
   border-radius: 10px;
   color: red;
-}
+} */

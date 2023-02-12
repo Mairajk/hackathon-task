@@ -4,17 +4,11 @@ import { collection, getDocs, query, where, addDoc } from "firebase/firestore";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../Navbar/Navbar";
-import "./Addproduct.css";
+import "./Addcategory.css";
 
-const Addproduct = () => {
-  const [productTitle, setProductTitle] = useState("");
-  const [productType, setProductType] = useState("");
+const Addcategory = () => {
+  const [productCategory, setproductCategory] = useState("");
   const [keyspecs, setKeyspecs] = useState("");
-  const [description, setDescription] = useState("");
-  const [brand, setBrand] = useState("");
-  const [customersupport, setCustomersupport] = useState("");
-  const [price, setPrice] = useState("");
-  const [warranty, setWarranty] = useState("");
   const [productimage, setProductimage] = useState("");
 
   const [imageError, setImageError] = useState("");
@@ -72,23 +66,17 @@ const Addproduct = () => {
 
   //   if (loggeduser) { console.log(loggeduser[0].email) }
 
-  const handleAddProduct = (e) => {
+  const handleAddcategory = (e) => {
     e.preventDefault();
     const storageRef = ref(
       storage,
-      `product-images${productType.toUpperCase()}/${Date.now()}`
+      `product-images${productCategory.toUpperCase()}/${Date.now()}`
     );
-
+    // console.log(storageRef._location.path);
     uploadBytes(storageRef, productimage).then(() => {
       getDownloadURL(storageRef).then((url) => {
-        addDoc(collection(db, `products-${productType.toUpperCase()}`), {
-          productTitle,
-          productType,
-          description,
-          brand,
-          customersupport,
-          price,
-          warranty,
+        addDoc(collection(db, `products-${productCategory.toUpperCase()}`), {
+          productCategory,
           productimage: url,
           keyspecs: keyspecs,
         });
@@ -98,51 +86,15 @@ const Addproduct = () => {
 
   return (
     <div>
-      <Navbar />
+      {/* <Navbar /> */}
       {loggeduser &&
       (loggeduser[0].email === "muhammadsaad@gmail.com" ||
         loggeduser[0].email === "saad@gmail.com") ? (
-        <div className="Addprod-container">
-          <form className="addprod-form" onSubmit={handleAddProduct}>
+        <div className="Addcategory-container">
+          <form className="Addcategory-form" onSubmit={handleAddcategory}>
             <p>Add Data</p>
             {successMsg && <div className="success-msg">{successMsg}</div>}
             {uploadError && <div className="error-msg">{uploadError}</div>}
-
-            <label>Product Title</label>
-            <input
-              type="text"
-              onChange={(e) => {
-                setProductTitle(e.target.value);
-              }}
-              placeholder="Product Title"
-            />
-
-            <label>Product Type</label>
-            <input
-              type="text"
-              onChange={(e) => {
-                setProductType(e.target.value);
-              }}
-              placeholder="Product Type"
-            />
-
-            <label>Brand Name</label>
-            <input
-              type="text"
-              onChange={(e) => {
-                setBrand(e.target.value);
-              }}
-              placeholder="Brand Name"
-            />
-
-            <label>Warranty</label>
-            <input
-              type="text"
-              onChange={(e) => {
-                setWarranty(e.target.value);
-              }}
-              placeholder="Product Warranty"
-            />
 
             <label>Image</label>
             <input type="file" onChange={handleProductImg} />
@@ -152,40 +104,13 @@ const Addproduct = () => {
               </>
             )}
 
-            <label>Key Specications</label>
-            <textarea
-              type="text"
-              onChange={(e) => {
-                setDescription(e.target.value);
-              }}
-              placeholder="Enter Some Specifications"
-            ></textarea>
-
-            <label>Description</label>
-            <textarea
-              type="text"
-              onChange={(e) => {
-                setDescription(e.target.value);
-              }}
-              placeholder="Product Description"
-            ></textarea>
-
-            <label>Price</label>
+            <label>Product Category</label>
             <input
               type="text"
               onChange={(e) => {
-                setPrice(e.target.value);
+                setproductCategory(e.target.value);
               }}
-              placeholder="Product Price"
-            />
-
-            <label>Customer Support</label>
-            <input
-              type="text"
-              onChange={(e) => {
-                setCustomersupport(e.target.value);
-              }}
-              placeholder="Customer Support Email,Phone or Address"
+              placeholder="Product Category"
             />
 
             <button type="submit">Add</button>
@@ -193,12 +118,11 @@ const Addproduct = () => {
         </div>
       ) : (
         <div>
-          You Dont have access to add product Please contact with Admin for
-          Access
+         Loading..........
         </div>
       )}
     </div>
   );
 };
 
-export default Addproduct;
+export default Addcategory;

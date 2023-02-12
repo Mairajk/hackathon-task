@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "./Login.css";
-import Navbar from "../Navbar/Navbar";
 import { Link, useNavigate } from "react-router-dom";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
