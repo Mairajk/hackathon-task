@@ -37,8 +37,8 @@ const Home = () => {
 
   return (
     <div>
-      <Navbar />
-      {/* <Baner /> */}
+      {/* <Navbar />
+      <Baner /> */}
       <div className="slider-head">
         <p>Limited Time Deals</p>
       </div>

@@ -1,8 +1,8 @@
-
-body{
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 .signup-container {
@@ -17,6 +17,7 @@ body{
   width: fit-content;
   height: fit-content;
   text-align: center;
+  margin-bottom: 50px;
 }
 
 .signup-container Header .mainHead {
@@ -25,7 +26,6 @@ body{
   height: 25px;
   font-size: 35px;
   font-weight: 700;
-  margin-top: 50px;
 }
 
 .signup-container Header .subHead {
@@ -79,10 +79,10 @@ body{
 }
 
 .signup-form a {
-    text-decoration: none;
-    color: #024F9D;
-    font-size: 15px;
-    font-weight: 700;
+  text-decoration: none;
+  color: #024f9d;
+  font-size: 15px;
+  font-weight: 700;
 }
 
 /* .signup-form p {

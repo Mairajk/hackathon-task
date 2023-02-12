@@ -78,7 +78,7 @@ const Signup = () => {
 
   return (
     <div>
-      <Navbar />
+      {/* <Navbar /> */}
       <div className="signup-container">
         <header>
           <h1 className="mainHead">SAYLANI WELFARE</h1>
@@ -140,8 +140,8 @@ const Signup = () => {
           <button type="submit">Sign up</button>
 
           <div>
-            <Link to="/login">
-              <span>Already have an Account? Login</span>
+            <Link to="/signup">
+              <span>Don’t have an account? Register</span>
             </Link>
           </div>
         </form>

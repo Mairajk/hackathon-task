@@ -1,8 +1,11 @@
-import React, { useState } from 'react'
-import './Login.css'
-import Navbar from '../Navbar/Navbar';
-import { Link, useNavigate } from 'react-router-dom';
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth"
+import React, { useState } from "react";
+import "./Login.css";
+import Navbar from "../Navbar/Navbar";
+import { Link, useNavigate } from "react-router-dom";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+
+import Email_icon from "../assets/icons/Email-icon.png";
+import Password_icon from "../assets/icons/Password-icon.png";
 
 const Login = () => {
   const [password, setPassword] = useState("");
@@ -13,19 +16,20 @@ const Login = () => {
   const navigate = useNavigate();
 
   const handleLogin = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        setSuccessMsg('Logged in successfully, you will now be automatically redirected to Home page.')
-        setPassword('')
-        setEmail('')
-        setErrorMsg('')
+        setSuccessMsg(
+          "Logged in successfully, you will now be automatically redirected to Home page."
+        );
+        setPassword("");
+        setEmail("");
+        setErrorMsg("");
 
         setTimeout(() => {
-          setSuccessMsg('');
-          navigate('/home')
-        }, 1000)
-
+          setSuccessMsg("");
+          navigate("/home");
+        }, 1000);
       })
       .catch((error) => {
         // const errorCode = error.code;
@@ -37,47 +41,62 @@ const Login = () => {
         // if (error.message === 'Firebase:Error (auth/email-already-in-use).') {
         //   setErrorMsg('user already exists')
         // }
-
-      })
+      });
     // e.reset()
-  }
+  };
 
   return (
     <div>
-      <Navbar />
+      {/* <Navbar /> */}
       <div className="login-container">
-        <form className="login-form">
-          <p>Login</p>
-          {successMsg && <><div className="success-msg">
-            {successMsg}
-          </div></>}
-          {errorMsg && <><div className="error-msg">
-            {errorMsg}
-          </div></>}
+        <header>
+          <h1 className="mainHead">SAYLANI WELFARE</h1>
+          <h3 className="subHead">ONLINE DISCOUNT STORE</h3>
+        </header>
 
+        <form className="login-form" onSubmit={handleLogin}>
+          {successMsg && (
+            <>
+              <div className="success-msg">{successMsg}</div>
+            </>
+          )}
+          {errorMsg && (
+            <>
+              <div className="error-msg">{errorMsg}</div>
+            </>
+          )}
 
-          <label>Email</label>
-          <input onChange={(e) => setEmail(e.target.value)}
-            type="email" placeholder="Enter your email" />
+          <label htmlFor="email">
+            <input
+              name="email"
+              onChange={(e) => setEmail(e.target.value)}
+              type="email"
+              placeholder="Email"
+            />
+            <img src={Email_icon} alt="" />
+          </label>
 
-          <label>Password</label>
-          <input onChange={(e) => setPassword(e.target.value)}
-            type="password" placeholder="Enter Your Password" />
+          <label htmlFor="password">
+            <input
+              name="password"
+              onChange={(e) => setPassword(e.target.value)}
+              type="password"
+              placeholder="Password"
+            />
+            <img src={Password_icon} alt="" />
+          </label>
 
-
-          <button onClick={handleLogin}>Login</button>
+          <button type="submit">Sign up</button>
 
           <div>
-            <span>Dont have an Account?</span>
-            <Link to="/signup">Sign up</Link>
+            <Link to="/login">
+              <span>Already have an Account? Login</span>
+            </Link>
           </div>
-
         </form>
       </div>
-
-
     </div>
   );
-}
+};
 
-export default Login
+export default Login;
