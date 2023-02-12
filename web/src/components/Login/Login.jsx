@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "./Login.css";
 import { Link, useNavigate } from "react-router-dom";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+
+import { GlobalContext } from "../../context/context";
 
 import Email_icon from "../assets/icons/Email-icon.png";
 import Password_icon from "../assets/icons/Password-icon.png";
@@ -9,32 +10,12 @@ import Password_icon from "../assets/icons/Password-icon.png";
 const Login = () => {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
-  const [errorMsg, setErrorMsg] = useState("");
-  const [successMsg, setSuccessMsg] = useState("");
-  const auth = getAuth();
   const navigate = useNavigate();
+
+  const { state, dispatch } = useContext(GlobalContext);
 
   const handleLogin = (e) => {
     e.preventDefault();
-    signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        console.log("==============>", userCredential);
-        setSuccessMsg(
-          "Logged in successfully, you will now be automatically redirected to Home page."
-        );
-        setPassword("");
-        setEmail("");
-        setErrorMsg("");
-
-        setTimeout(() => {
-          setSuccessMsg("");
-          navigate("/home");
-        }, 1000);
-      })
-      .catch((error) => {
-        console.log(error.message);
-        setErrorMsg(error.message);
-      });
   };
 
   return (
@@ -46,17 +27,6 @@ const Login = () => {
         </header>
 
         <form className="login-form" onSubmit={handleLogin}>
-          {successMsg && (
-            <>
-              <div className="success-msg">{successMsg}</div>
-            </>
-          )}
-          {errorMsg && (
-            <>
-              <div className="error-msg">{errorMsg}</div>
-            </>
-          )}
-
           <label htmlFor="email">
             <input
               name="email"
