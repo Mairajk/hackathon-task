@@ -1,0 +1,6 @@
+.react-multi-carousel-item {
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+    justify-content: center;
+    display: flex;
+}

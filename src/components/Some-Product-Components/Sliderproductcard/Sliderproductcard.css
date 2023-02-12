@@ -1,0 +1,84 @@
+.mini-product-container{
+    display: flex;
+    flex-direction: column;
+    border-color: rgb(255,255,255);
+    margin: 5px;
+    width: 300px;
+    border: 1px solid rgb(245,245,245);
+    box-shadow: 0px 0px 5px 0px gray;
+    justify-content: space-evenly   ;
+    padding: 10px;
+    align-items: center;
+    height: 500px;
+    border-radius: 10px;
+ }
+
+ .mini-img-container{
+    height: 220px;
+    display: flex;
+    align-items: center;
+ }
+
+ .mini-product-container img{
+    max-height: 200px;
+    max-width: 220px;
+ }
+
+ .mini-producttitle{
+    font-size: 20px;
+    font-weight: 700;
+ } 
+/* 
+ .product-details{
+    width: 70%;
+ } */
+
+
+ .price-container{
+    display: flex;
+    padding: 0px;
+    margin: 0px;
+    flex-direction: column;
+ }
+
+ .mrp,
+ .saleprice,
+ .yousave{
+    display: flex;
+    margin: 0px;
+    line-height: 0px;
+    padding: 5px;
+ }
+
+ .showmore-btn{
+    background-color: white;
+    color: #ffbb00;
+    border: 2px solid #ffbb00;
+    padding: 5px;
+    border-radius: 5px;
+    margin-right: 10px;
+    margin-top: 15px;
+ }
+
+ .showmore-btn:hover{
+    background-color: black;
+    color: #ffbb00;
+ }
+ .saleprice .rate{
+    color: greenyellow;
+    margin-left: 5px;
+ }
+
+ .mrp .rate{
+    color: red;
+    margin-left: 5px;
+    border: 1px solid;
+ }
+
+ .buy-cart{
+    display: flex;
+    margin-top: 20px;
+    margin-left: 5px;
+    justify-content: left;
+ }
+
