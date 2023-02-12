@@ -24,26 +24,7 @@ function App() {
         <Route path="/userprofile" element={<UserProfile />} />
         <Route path="/sellproduct" element={<Addproduct />} />
         <Route path="/sellproduct" element={<Addproduct />} />
-        <Route
-          path="/product-types/mobiles"
-          element={<Allproductpage type={"Mobile"} />}
-        />
-        <Route
-          path="/product-types/laptops"
-          element={<Allproductpage type={"Laptop"} />}
-        />
-        <Route
-          path="/product-types/cameras"
-          element={<Allproductpage type={"Camera"} />}
-        />
-        <Route
-          path="/product-types/shoes"
-          element={<Allproductpage type={"Shoes"} />}
-        />
-        <Route
-          path="/product/:productType/:id"
-          element={<SpecificProductpage />}
-        />
+        
 
         {/* {`/product/${p.id}/${p.productTitle}/${p.brand}/${p.customersupport}/ ${p.description}/${p.price}/${p.productType}/${p.productimage}/${p.warranty}`} */}
 

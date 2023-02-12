@@ -43,6 +43,7 @@ const Signup = () => {
           cart: initialcatvalue,
           address: address,
           uid: user.uid,
+          role: user,
         })
           .then(() => {
             setSuccessMsg(
@@ -78,7 +79,6 @@ const Signup = () => {
 
   return (
     <div>
-      {/* <Navbar /> */}
       <div className="signup-container">
         <header>
           <h1 className="mainHead">SAYLANI WELFARE</h1>
@@ -140,8 +140,8 @@ const Signup = () => {
           <button type="submit">Sign up</button>
 
           <div>
-            <Link to="/signup">
-              <span>Don’t have an account? Register</span>
+            <Link to="/login">
+              <span>Already have an Account? Login</span>
             </Link>
           </div>
         </form>

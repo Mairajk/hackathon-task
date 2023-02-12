@@ -19,6 +19,7 @@ const Login = () => {
     e.preventDefault();
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
+        console.log("==============>", userCredential);
         setSuccessMsg(
           "Logged in successfully, you will now be automatically redirected to Home page."
         );
@@ -32,22 +33,13 @@ const Login = () => {
         }, 1000);
       })
       .catch((error) => {
-        // const errorCode = error.code;
         console.log(error.message);
         setErrorMsg(error.message);
-        // if (error.message === 'Firebase:Error (auth/invalid-email).') {
-        //   setErrorMsg('Please fill all required fields')
-        // }
-        // if (error.message === 'Firebase:Error (auth/email-already-in-use).') {
-        //   setErrorMsg('user already exists')
-        // }
       });
-    // e.reset()
   };
 
   return (
     <div>
-      {/* <Navbar /> */}
       <div className="login-container">
         <header>
           <h1 className="mainHead">SAYLANI WELFARE</h1>
@@ -86,11 +78,11 @@ const Login = () => {
             <img src={Password_icon} alt="" />
           </label>
 
-          <button type="submit">Sign up</button>
+          <button type="submit">Login</button>
 
           <div>
-            <Link to="/login">
-              <span>Already have an Account? Login</span>
+            <Link to="/signup">
+              <span>Don’t have an account? Register</span>
             </Link>
           </div>
         </form>

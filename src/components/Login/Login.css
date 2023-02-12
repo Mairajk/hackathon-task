@@ -1,11 +1,3 @@
-body {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  text-align: center;
-}
-
 .login-container {
   display: flex;
   flex-direction: column;
@@ -48,6 +40,7 @@ body {
 }
 
 .login-form input {
+  width: 88%;
   margin: 2px 0px;
   padding: 5px;
   font-size: 18px;
@@ -56,7 +49,7 @@ body {
 }
 
 .login-form label {
-  width: 248px;
+  width: 298px;
   border-bottom: 1px solid #d4d3d3;
   padding: 0px;
   margin-top: 16px;
