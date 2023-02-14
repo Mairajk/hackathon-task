@@ -48,9 +48,10 @@ app.use(
 app.post("/api/v1/signup", async (request, response) => {
   let body = request.body;
 
-  if (!body.firstName || !body.phoneNumber || !body.email || !body.password) {
+  if (!body.fullName || !body.phoneNumber || !body.email || !body.password) {
     response.status(400).send({
-      message: `required fields missing, example request : 
+      message: `Required field(s) missing`,
+      devMessage: `required fields missing, example request : 
             {
                fullName : 'Mairaj Khan',
                 phoneNumber : '+92311*******',
@@ -60,13 +61,13 @@ app.post("/api/v1/signup", async (request, response) => {
     });
     return;
   }
-  // console.log('=======================>');
+  console.log('=======================>');
 
   body.email = body.email.toLowerCase();
 
 
 
-  await userModel.findOne({ email: body.email }, (err, user) => {
+  userModel.findOne({ email: body.email }, (err, user) => {
     if (!err) {
       console.log("user ===> ", user);
 
@@ -90,8 +91,8 @@ app.post("/api/v1/signup", async (request, response) => {
               if (!err) {
                 console.log("user created ==> ", user);
 
-                response.status(201).send({
-                  message: "user created successfully",
+                response.status(200).send({
+                  message: "Registeration done successfully",
                   data: user,
                 });
               } else {
@@ -114,7 +115,6 @@ app.post("/api/v1/signup", async (request, response) => {
       return;
     }
   });
-  // console.log('second =================>');
 });
 //////////////////////////////////////////////////////////////////
 

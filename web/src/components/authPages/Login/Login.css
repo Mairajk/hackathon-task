@@ -49,8 +49,6 @@
 }
 
 .login-form label {
-  width: 298px;
-  border-bottom: 1px solid #d4d3d3;
   padding: 0px;
   margin-top: 16px;
   font-weight: 700;
@@ -77,4 +75,18 @@
   color: #024f9d;
   font-size: 15px;
   font-weight: 700;
+}
+
+.inputDiv > div {
+  width: 248px;
+  border-bottom: 1px solid #d4d3d3;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.inputError {
+  margin: 0px 0px 15px;
+  color: red;
+  font-weight: 500;
 }

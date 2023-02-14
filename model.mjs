@@ -19,7 +19,7 @@ const userSchema = new mongoose.Schema({
 
 export const userModel = mongoose.model("Users", userSchema);
 
-/////////////////////////// post model and Schema //////////////////////////////////
+/////////////////////////// product model and Schema //////////////////////////////////
 
 const productSchema = new mongoose.Schema({
     userId: { type: String },
@@ -33,7 +33,7 @@ export const productModel = mongoose.model("products", productSchema);
 //////////////////////////////////////////////////////////////////////////////
 
 
-/////////////////////////// post model and Schema //////////////////////////////////
+/////////////////////////// Order model and Schema //////////////////////////////////
 
 const orderSchema = new mongoose.Schema({
     userId: { type: String },

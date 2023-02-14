@@ -5,17 +5,14 @@ import axios from "axios";
 import { useFormik } from "formik";
 import * as yup from "yup";
 
-import { GlobalContext } from "../../context/context";
-
-import Email_icon from "../assets/icons/Email-icon.png";
-import Password_icon from "../assets/icons/Password-icon.png";
+import "./Login.css";
+import { GlobalContext } from "../../../context/context";
+import Email_icon from "../../assets/icons/Email-icon.png";
+import Password_icon from "../../assets/icons/Password-icon.png";
 
 const Login = () => {
-  const [password, setPassword] = useState("");
-  const [email, setEmail] = useState("");
-  const navigate = useNavigate();
-
   const { state, dispatch } = useContext(GlobalContext);
+  const [message, setMessage] = useState("");
 
   const formik = useFormik({
     initialValues: {
@@ -41,10 +38,8 @@ const Login = () => {
       const loginHandler = () => {
         axios
           .post(
-            `${state.baseURL}/signup`,
+            `${state.baseURL}/login`,
             {
-              fullName: values.fullName,
-              phoneNumber: values.phoneNumber,
               email: values.email,
               password: values.password,
             },
@@ -54,8 +49,8 @@ const Login = () => {
           )
           .then((res) => {
             console.log("response ===>", res);
-            console.log("Signup successfull");
-            // setIsSignup(false);
+            console.log("Login successfull");
+
             dispatch({
               type: "USER_LOGIN",
               payload: null,
@@ -68,7 +63,7 @@ const Login = () => {
           })
           .catch((err) => {
             console.log("error ===>", err);
-            // setMessage(err?.response?.data?.message);
+            setMessage(err?.response?.data?.message);
           });
       };
 
@@ -84,39 +79,45 @@ const Login = () => {
           <h3 className="subHead">ONLINE DISCOUNT STORE</h3>
         </header>
 
-        <form className="login-form">
-          <div>
-            <label htmlFor="email">
+        <p className="resMessage">{message}</p>
+
+        <form className="login-form" onSubmit={formik.handleSubmit}>
+          <div className="inputDiv">
+            <div>
               <input
                 name="email"
                 onChange={formik.handleChange}
                 type="email"
                 placeholder="Email"
               />
-              <img src={Email_icon} alt="" />
-            </label>
-            {formik.touched.email && Boolean(formik.errors.email) ? (
-              <p className="inputError">{formik.errors.email}</p>
-            ) : (
-              <p className="inputError"></p>
-            )}
+              <label htmlFor="email">
+                <img src={Email_icon} alt="" />
+              </label>
+            </div>
+            <p className="inputError">
+              {formik.touched.email && Boolean(formik.errors.email)
+                ? formik.errors.email
+                : null}
+            </p>
           </div>
 
-          <div>
-            <label htmlFor="password">
+          <div className="inputDiv">
+            <div>
               <input
                 name="password"
                 onChange={formik.handleChange}
                 type="password"
                 placeholder="Password"
               />
-              <img src={Password_icon} alt="" />
-            </label>
-            {formik.touched.password && Boolean(formik.errors.password) ? (
-              <p className="inputError">{formik.errors.password}</p>
-            ) : (
-              <p className="inputError"></p>
-            )}
+              <label htmlFor="password">
+                <img src={Password_icon} alt="" />
+              </label>
+            </div>
+            <p className="inputError">
+              {formik.touched.password && Boolean(formik.errors.password)
+                ? formik.errors.password
+                : null}
+            </p>
           </div>
           <button type="submit">Login</button>
 

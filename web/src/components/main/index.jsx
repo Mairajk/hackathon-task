@@ -1,73 +1,58 @@
-import { useState, useContext, useEffect } from "react";
+/*------------------ Libraries -----------------*/
+
+import { useContext } from "react";
+import { Routes, Route, Navigate } from "react-router-dom";
+
+/*------------------- Context Store ------------------*/
+
 import { GlobalContext } from "../../context/context";
-import axios from "axios";
-import Signup from "../Signup/Signup";
-import Login from "../Login/Login";
-import { Routes, Route, Link, Navigate } from "react-router-dom";
 
-import Home from "../Home/Home";
-import Addcategory from "../Admin-portal/Addcategory/Addcategory";
-import AddItem from "../Admin-portal/addItem/addItem";
+/* ---------------- Pages ----------------------*/
 
-///================ Styling ===================================
+/* Auth Pages */
+import Login from "../authPages/Login";
+import Signup from "../authPages/Signup";
 
-////=====================================================
+/* Admin Pages */
+import AdminHome from "../adminPortals/AdminHome";
+import AddItems from "../adminPortals/AddItems";
+import AdminAccount from "../adminPortals/AdminAccount";
+import Orders from "../adminPortals/Orders";
+
+/* User Pages */
+import Home from "../userPortals/Home";
+import Cart from "../userPortals/Cart";
+import Account from "../userPortals/Account";
+
+/* ======================================================================================================== */
 
 const Main = () => {
   let { state, dispatch } = useContext(GlobalContext);
 
-  useEffect(() => {
-    const getProfile = async () => {
-      try {
-        let res = await axios.get(
-          `${state.baseURL}/profile`,
-          // {},
-          {
-            withCredentials: true,
-          }
-        );
-
-        console.log("useEffect ===>: ", res);
-
-        dispatch({
-          type: "USER_LOGIN",
-        });
-        dispatch({
-          type: "SET_ADMIN",
-          payload: res.data.isAdmin,
-        });
-        dispatch({
-          type: "SET_USER",
-          payload: res.data.userProfile,
-        });
-      } catch (error) {
-        console.log("axios error: ", error);
-
-        // dispatch({
-        //     type: 'USER_LOGOUT'
-        // })
-      }
-    };
-    getProfile();
-  }, []);
+  console.log("state =============>", state);
 
   return (
     <div>
-      {state?.isLogin ? (
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/Addcategory" element={<Addcategory />} />
-          <Route path="/AddItem" element={<AddItem />} />
-          <Route path="*" element={<Navigate to={`/`} replace={true} />} />
-        </Routes>
-      ) : (
-        <Routes>
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/" element={<Login />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="*" element={<Navigate to={`/`} replace={true} />} />
-        </Routes>
-      )}
+      <h1>This is Main</h1>
+      <Routes>
+        {state.isAdmin ? (
+          <>
+            <Route path="/" element={<AdminHome />} />
+            <Route path="/orders" element={<Orders />} />
+            <Route path="/addItems" element={<AddItems />} />
+            <Route path="/account" element={<AdminAccount />} />
+          </>
+        ) : (
+          <>
+            <Route path="/" element={<Home />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/account" element={<Account />} />
+          </>
+        )}
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="*" element={<Navigate to={`/`} replace={true} />} />
+      </Routes>
     </div>
   );
 };
