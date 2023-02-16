@@ -23,6 +23,7 @@ import Orders from "../adminPortals/Orders";
 import Home from "../userPortals/Home";
 import Cart from "../userPortals/Cart";
 import Account from "../userPortals/Account";
+import Navbar from "../Navbar";
 
 /* ======================================================================================================== */
 
@@ -33,6 +34,7 @@ const Main = () => {
 
   return (
     <div>
+      <Navbar state />
       <h1>This is Main</h1>
       <Routes>
         {state.isAdmin ? (
@@ -41,17 +43,25 @@ const Main = () => {
             <Route path="/orders" element={<Orders />} />
             <Route path="/addItems" element={<AddItems />} />
             <Route path="/account" element={<AdminAccount />} />
+            <Route path="*" element={<Navigate to={`/`} replace={true} />} />
           </>
-        ) : (
+        ) : !state.isLogin ? (
           <>
             <Route path="/" element={<Home />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/account" element={<Account />} />
+            <Route path="*" element={<Navigate to={`/`} replace={true} />} />
+          </>
+        ) : (
+          <>
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/login" element={<Login />} />
+            <Route
+              path="*"
+              element={<Navigate to={`/login`} replace={true} />}
+            />
           </>
         )}
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="*" element={<Navigate to={`/`} replace={true} />} />
       </Routes>
     </div>
   );
