@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { FaShoppingCart, FaHome } from "react-icons/fa";
 import { BsFillPersonFill } from "react-icons/bs";
+import { MdAddCircleOutline } from "react-icons/md";
 
 import "./Navbar.css";
 // import accountIcon from "../assets/icons/accountIcon.svg";
@@ -19,22 +20,24 @@ const Navbar = (props) => {
   return (
     <div>
       {!props.isLogin ? (
-        props.isAdmin ? (
+        !props.isAdmin ? (
           <nav>
             <ul>
               <li className="adminHomeNav">
-                <Link to="/">
+                <Link to="/admin/">
                   <FaHome />
                   <p> Home</p>
                 </Link>
               </li>
               <li className="addItemsNav">
-                <Link to="/addItems">
+                <Link to="/admin/addItems">
+                  <MdAddCircleOutline />
                   <p> Add Items </p>
                 </Link>
               </li>
               <li className="adminAccountNav">
-                <Link to="/adminAccount">
+                <Link to="/admin/account">
+                  <BsFillPersonFill />
                   <p> Account</p>
                 </Link>
               </li>

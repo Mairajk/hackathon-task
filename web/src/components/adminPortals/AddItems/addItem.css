@@ -1,0 +1,106 @@
+.itemForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.addItem h3 {
+  color: #024f9d;
+  font-size: 20px;
+  font-weight: 600;
+  margin: 15px 0px 25px 55px;
+}
+
+.imageInput {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  width: 90%;
+  height: 143px;
+  margin: 0px auto;
+  background-color: #d9d9d9;
+  border-radius: 15px;
+}
+
+.itemPhoto {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.itemName {
+  display: flex;
+  margin: 10px auto;
+  width: 85%;
+  padding: 5px 10px;
+  border-radius: 15px;
+  background: #d9d9d9;
+  font-size: 20px;
+  border: none;
+  outline: none;
+}
+
+select {
+  display: flex;
+  margin: 10px auto;
+  width: 90%;
+  padding: 5px 15px;
+  border-radius: 15px;
+  background: #d9d9d9;
+  font-size: 20px;
+  border: none;
+  outline: none;
+  color: #bdbaba;
+  appearance: none;
+  -moz-appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  background-image: url("../../assets/icons/dropDownArrow.png");
+  background-repeat: no-repeat;
+  background-position: calc(100% - 20px) center;
+  right: 50px;
+}
+
+.unitsDiv {
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 0px;
+}
+
+.unitsDiv label {
+  font-size: 20px;
+  font-weight: 600;
+  color: #024f9d;
+}
+
+.unitsDiv input {
+  background: #d9d9d9;
+  width: 180px;
+  padding: 10px 15px;
+  border-radius: 15px;
+  border: none;
+  outline: none;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.addProBtn {
+  background-color: #61b846;
+  color: #ffffff;
+  width: 217px;
+  font-size: 25px;
+  font-weight: 600;
+  height: 55px;
+  border-radius: 15px;
+  outline: none;
+  border: none;
+  box-shadow: 0px 4px 4px 2px rgba(0, 0, 0, 0.25);
+  margin: 10px;
+}
+
+.addItem {
+  margin-bottom: 130px;
+}

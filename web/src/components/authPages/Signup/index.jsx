@@ -90,7 +90,7 @@ const Signup = () => {
   });
 
   return (
-    <div>
+    <>
       <div className="signup-container">
         <header>
           <h1 className="mainHead">SAYLANI WELFARE</h1>
@@ -185,7 +185,7 @@ const Signup = () => {
           </div>
         </form>
       </div>
-    </div>
+    </>
   );
 };
 
