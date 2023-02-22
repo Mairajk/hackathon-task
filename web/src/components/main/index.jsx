@@ -17,7 +17,7 @@ import Signup from "../authPages/Signup";
 
 /* Admin Pages */
 import AdminHome from "../adminPortals/AdminHome";
-import AddItems from "../adminPortals/AddItems";
+import AddItems from "../adminPortals/AddItems/index";
 import AdminAccount from "../adminPortals/AdminAccount";
 import Orders from "../adminPortals/Orders";
 
