@@ -1,0 +1,32 @@
+.allProducts {
+  padding: 0px 5%;
+}
+
+.allProducts > h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #024f9d;
+}
+
+.eachProduct {
+  background: #ffffff;
+  width: 95%;
+  display: flex;
+  justify-content: space-between;
+  margin: 20px auto;
+  align-items: center;
+  border: 1px solid #65bd50;
+  border-radius: 15px;
+  padding: 5px;
+}
+
+.eachProduct > .productImage {
+  width: 45%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.eachProduct > .details {
+  width: 55%;
+}

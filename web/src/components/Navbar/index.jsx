@@ -5,37 +5,30 @@ import { BsFillPersonFill } from "react-icons/bs";
 import { MdAddCircleOutline } from "react-icons/md";
 
 import "./Navbar.css";
-// import accountIcon from "../assets/icons/accountIcon.svg";
-// import addIcon from "../assets/icons/addIcon.svg";
-// import HomeIcon from "../assets/icons/homeIcon.svg";
-
 //  import { GlobalContext } from "../../../context/context";
 
 const Navbar = (props) => {
-  const changeColor = (e) => {
-    e.target.style.color = "#61B846";
-    e.target.style.border = "2px";
-  };
-
   return (
     <div>
       {!props.isLogin ? (
         !props.isAdmin ? (
           <nav>
             <ul>
-              <li className="adminHomeNav">
+              <li className="navItems adminHomeNav " id="navItem">
                 <Link to="/admin/">
                   <FaHome />
                   <p> Home</p>
                 </Link>
               </li>
-              <li className="addItemsNav">
+
+              <li className="navItems addItemsNav ">
                 <Link to="/admin/addItems">
                   <MdAddCircleOutline />
                   <p> Add Items </p>
                 </Link>
               </li>
-              <li className="adminAccountNav">
+
+              <li className="navItems adminAccountNav ">
                 <Link to="/admin/account">
                   <BsFillPersonFill />
                   <p> Account</p>
@@ -46,24 +39,21 @@ const Navbar = (props) => {
         ) : (
           <nav>
             <ul>
-              <li
-                className="adminAccountNav"
-                style={{
-                  color: "#61B846",
-                }}
-              >
+              <li className="navItems adminAccountNav ">
                 <Link to="/">
                   <FaHome />
                   <p> Home</p>
                 </Link>
               </li>
-              <li className="cartNav">
+
+              <li className="navItems cartNav ">
                 <Link to="/cart">
                   <FaShoppingCart />
                   <p>Cart</p>
                 </Link>
               </li>
-              <li className="accountNav">
+
+              <li className="navItems accountNav ">
                 <Link to="/account">
                   <BsFillPersonFill />
                   <p>Account</p>

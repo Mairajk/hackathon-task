@@ -1,15 +1,16 @@
-.addItem header {
+header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
   height: fit-content;
   padding: 5px 0px;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin: 10px 0px;
+  /* margin-top: 20px;
+  margin-bottom: 20px; */
 }
 
-.addItem header > div {
+header > div {
   margin: 0px 10px;
 }
 

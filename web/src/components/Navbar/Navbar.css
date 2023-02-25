@@ -34,12 +34,12 @@ nav > ul > li > a {
 }
 
 nav > ul > li > a > p {
-  margin: 5px 0px ;
+  margin: 5px 0px;
   font-size: 0.75rem;
   font-weight: 700;
 }
 
-/* nav > ul > li > a:is(:active , :focus ){
-    color: #61B846;
-    background-color: red;
-} */
+nav > ul > li > a:is(:active, :focus, ) {
+  color: #61b846;
+  background-color: red;
+}
