@@ -1,5 +1,6 @@
 .allProducts {
-  padding: 0px 5%;
+  padding: 0px 5% 80px ;
+  margin: 20px 0px;
 }
 
 .allProducts > h3 {
@@ -29,4 +30,34 @@
 
 .eachProduct > .details {
   width: 55%;
+  padding: 0 4%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  color: #bfbcbc;
 }
+
+.eachProduct > .details > div {
+  margin: 0px 0px 5px 0px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.eachProduct > .details > div > p.productName {
+  margin-bottom: 2px;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 25px;
+  color: #61b846;
+}
+
+/* .eachProduct > .details > div > p.productUnit{
+  margin: 0px ;
+} */

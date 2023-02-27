@@ -1,0 +1,82 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.orders {
+  margin: 30px 0px 100px 0px;
+  padding: 0px 8%;
+}
+
+.orders > h3 {
+  font-weight: 700;
+  font-size: 20px;
+  color: #024f9d;
+}
+
+.orderStatusForm {
+  display: flex;
+}
+
+.orderStatusForm > button {
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  background: transparent;
+  color: #bfbfbf;
+}
+
+.orderStatusForm > button.unstable {
+  display: flex;
+  align-items: center;
+  color: orangered;
+  font-size: 1em;
+}
+
+.check {
+  display: flex;
+  align-items: center;
+  color: green;
+  font-size: 1.25em;
+}
+
+.eachOrder {
+  margin: 25px 0px 0px;
+}
+
+.orderStatusForm > select.selected {
+  color: #61B846;
+}
+
+.orderStatusForm > select > option {
+  color: #ffffff;
+  background-color: #bfbfbf;
+  width: 70px;
+  border: 5px solid black;
+}
+
+.orderStatusForm > select > option.defaultSelect {
+  color: #bfbfbf;
+}
+
+.eachOrder > .customerName {
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.eachOrder > .statusANDcontact {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.eachOrder > .statusANDcontact > .contact {
+  font-weight: 400;
+  font-size: 0.8rem;
+}
+
+.items > .eachItem {
+  font-weight: 400;
+  font-size: 1.05rem;
+  color: #bfbfbf;
+}

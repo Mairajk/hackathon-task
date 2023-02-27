@@ -39,7 +39,7 @@ const AdminHome = () => {
                 <p className="productName">Apple</p>
                 <p className="productUnit">1. kg</p>
               </div>
-              <p className="price">$21</p>
+              <p className="price">$2.1</p>
             </div>
           </div>
         ))}

@@ -25,7 +25,7 @@ const Header = () => {
           </div>
         </div>
 
-        <div className="orders">
+        <div className="ordersIcon">
           <Link to="/admin/orders">
             <img src={orderIcon} alt="" />
           </Link>
