@@ -2,6 +2,11 @@
   margin: 0;
   padding: 0;
 }
+/* 
+body{
+  background: #323232;
+  color: white;
+} */
 
 .orders {
   margin: 30px 0px 100px 0px;
@@ -16,6 +21,7 @@
 
 .orderStatusForm {
   display: flex;
+  flex-direction: row-reverse;
 }
 
 .orderStatusForm > button {
@@ -45,7 +51,7 @@
 }
 
 .orderStatusForm > select.selected {
-  color: #61B846;
+  color: #61b846;
 }
 
 .orderStatusForm > select > option {
@@ -55,7 +61,8 @@
   border: 5px solid black;
 }
 
-.orderStatusForm > select > option.defaultSelect {
+.orderStatusForm > select > option.defaultSelect:checked {
+  background-color: #bfbfbf;
   color: #bfbfbf;
 }
 
@@ -77,6 +84,19 @@
 
 .items > .eachItem {
   font-weight: 400;
-  font-size: 1.05rem;
+  font-size: 0.9rem;
   color: #bfbfbf;
+}
+
+.eachOrder > .total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1%;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.eachOrder > .total > .amount {
+  color: #61b846;
 }

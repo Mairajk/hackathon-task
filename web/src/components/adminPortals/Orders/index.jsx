@@ -13,43 +13,39 @@ const Orders = () => {
   const [message, setMessage] = useState("");
   const [data, setData] = useState(["", "", "", "", "", "", "", "", "", ""]);
   const [data2, setData2] = useState(["", "", "", ""]);
+  const [isStable, setIsStable] = useState(true);
+  const [check, setCheck] = useState(false);
+  const [status, setStatus] = useState(null);
 
-  const formik = useFormik({
-    initialValues: {
-      email: "",
-      password: "",
-    },
+  const syncChanges = (e) => {
+    e.preventDefault();
+    console.log("event ===============================>", e);
+    setCheck(true);
+    setIsStable(true);
+    e.target.value = "";
+    // e
+// 
+    // setTimeout(() => {
+    //   setCheck(false);
+    // }, 3000);
 
-    validationSchema: yup.object({
-      email: yup.string("Enter your email"),
-    }),
-
-    onSubmit: (values) => {
-      const statusChanger = () => {
-        axios
-          .post(
-            `${state.baseURL}/login`,
-            {
-              email: values.email,
-              password: values.password,
-            },
-            {
-              withCredentials: true,
-            }
-          )
-          .then((res) => {
-            console.log("response ===>", res);
-            console.log("Login successfull");
-          })
-          .catch((err) => {
-            console.log("error ===>", err);
-            setMessage(err?.response?.data?.message);
-          });
-      };
-
-      statusChanger();
-    },
-  });
+    // axios
+    //   .post(
+    //     `${state.baseURL}/login`,
+    //     {},
+    //     {
+    //       withCredentials: true,
+    //     }
+    //   )
+    //   .then((res) => {
+    //     console.log("response ===>", res);
+    //     console.log("Login successfull");
+    //   })
+    //   .catch((err) => {
+    //     console.log("error ===>", err);
+    //     setMessage(err?.response?.data?.message);
+    //   });
+  };
 
   return (
     <div>
@@ -62,7 +58,13 @@ const Orders = () => {
           data={data}
           data2={data2}
           isAdmin={state.isAdmin}
-          formik={formik}
+          status={status}
+          setStatus={setStatus}
+          isStable={isStable}
+          setIsStable={setIsStable}
+          check={check}
+          setCheck={setCheck}
+          syncChanges={syncChanges}
         />
       </div>
     </div>
