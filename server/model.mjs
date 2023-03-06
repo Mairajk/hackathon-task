@@ -4,7 +4,7 @@ import mongoose from "mongoose";
 
 const mongodbURI =
     process.env.mongodbURI ||
-    "mongodb+srv://MairajK:workhardin@cluster0.sihvwcq.mongodb.net/hackathon?retryWrites=true&w=majority";
+    "mongodb+srv://MairajK:workhardin@cluster0.sihvwcq.mongodb.net/saylaniStore?retryWrites=true&w=majority";
 
 
 ///////////////////////////////// USER schema and model ////////////////////////
@@ -22,10 +22,13 @@ export const userModel = mongoose.model("Users", userSchema);
 /////////////////////////// product model and Schema //////////////////////////////////
 
 const productSchema = new mongoose.Schema({
-    userId: { type: String },
-    decriptionText: { type: String },
-    postImage: { type: String },
-    date: { type: Date, default: Date.now },
+    name: { type: String, required: true },
+    image: { type: String },
+    decription: { type: String },
+    category: { type: String, required: true },
+    sellerId: { type: mongoose.Types.ObjectId, required: true },
+    sellerName: { type: String, required: true },
+    createdAt: { type: Date, default: Date.now },
 });
 
 export const productModel = mongoose.model("products", productSchema);
@@ -36,8 +39,8 @@ export const productModel = mongoose.model("products", productSchema);
 /////////////////////////// Order model and Schema //////////////////////////////////
 
 const orderSchema = new mongoose.Schema({
-    userId: { type: String },
-    date: { type: Date, default: Date.now },
+    userId: { type: mongoose.Types.ObjectId },
+    createdAt: { type: Date, default: Date.now },
     orderProducts: { type: Array, required: true }
 });
 
@@ -46,33 +49,66 @@ export const orderModel = mongoose.model("orders", orderSchema);
 //////////////////////////////////////////////////////////////////////////////
 
 
+
+/////////////////////////// Cart model and Schema //////////////////////////////////
+
+const cartSchema = new mongoose.Schema({
+    userId: { type: mongoose.Types.ObjectId },
+    createdAt: { type: Date, default: Date.now },
+    cartProducts: { type: Array, required: true }
+});
+
+export const cartModel = mongoose.model("carts", cartSchema);
+
+//////////////////////////////////////////////////////////////////////////////
+
+
+
+/////////////////////////// categories model and Schema //////////////////////////////////
+
+const categoriesSchema = new mongoose.Schema({
+    sellerId: { type: mongoose.Types.ObjectId },
+    createdAt: { type: Date, default: Date.now },
+    name: { type: Array, required: true },
+    image: { type: String },
+
+});
+
+export const categoriesModel = mongoose.model("categories", categoriesSchema);
+
+//////////////////////////////////////////////////////////////////////////////
+
+
+
+
 //////////////////////////////////////////////////////////////////////////////
 
 
 mongoose.connect(mongodbURI);
 
 ////////////////mongodb connected disconnected events///////////////////////////////////////////////
-mongoose.connection.on("connected", function () {
+
+mongoose.connection.on("connected", () => {
     //connected
     console.log("Mongoose is connected");
 });
 
-mongoose.connection.on("disconnected", function () {
+mongoose.connection.on("disconnected", () => {
     //disconnected
     console.log("Mongoose is disconnected");
     process.exit(1);
 });
 
-mongoose.connection.on("error", function (err) {
+mongoose.connection.on("error", (err) => {
     //any error
     console.log("Mongoose connection error: ", err);
     process.exit(1);
 });
 
-process.on("SIGINT", function () {
+process.on("SIGINT", () => {
     /////this function will run jst before app is closing
     console.log("app is terminating");
-    mongoose.connection.close(function () {
+    mongoose.connection.close(() => {
         console.log("Mongoose default connection closed");
         process.exit(0);
     });

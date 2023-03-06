@@ -3,8 +3,26 @@ import { useState } from "react";
 import { FaSync, FaCheck } from "react-icons/fa";
 
 const OrderList = (props) => {
-  const { data, data2, isStable } = props;
-  const [isSelect, setIsSelect] = useState(false);
+  const {
+    data,
+    data2,
+    isStable,
+    setIsStable,
+    isAdmin,
+    check,
+    setCheck,
+    status,
+    setStatus,
+    syncChanges,
+  } = props;
+
+  const checkOut = () => {
+    if (check) {
+      setTimeout(() => {
+        setCheck(false);
+      }, 10000);
+    }
+  };
 
   return (
     <div>
@@ -29,41 +47,53 @@ const OrderList = (props) => {
                 <span className="quantity"> ITEM NAME </span>
               </div>
             ))}
-
-            {!props.isAdmin ? (
-              <form action="" className="orderStatusForm">
-                <select
-                  name="status"
-                  id="status"
-                  className=""
-                  onChange={(e) => {
-                    console.log(
-                      "========================>",
-                      e.target.class
-                    );
-
-                    // e.target.attributes.class = "selected";
-                  }}
-                >
-                  <option value="" className="defaultSelect" disabled selected>
-                    Change status
-                  </option>
-                  *<option value="pending">pending</option>*
-                  <option value="active">active</option>*
-                  <option value="complete">complete</option>*
-                </select>
-                {!isStable ? (
-                  <i className="check">
-                    <FaCheck />
-                  </i>
-                ) : (
-                  <button className={isStable ? "stable" : "unstable"}>
-                    <FaSync />
-                  </button>
-                )}
-              </form>
-            ) : null}
           </div>
+          <div className="total">
+            <p className="label">Total</p>
+            <p className="amount">187</p>
+          </div>
+
+          {!isAdmin ? (
+            <form action="" className="orderStatusForm" onSubmit={syncChanges}>
+              <select
+                name="status"
+                className=""
+                onChange={(e) => {
+                  setStatus(e.target.value);
+                  setIsStable(!e.target.value);
+                  console.log("stable ====== =>", isStable);
+                  console.log("status ====== =>", status);
+                  e.target.attributes.class.value = e.target.value
+                    ? "selected"
+                    : null;
+                  console.log(
+                    "class =======>",
+                    e.target.attributes.class.value
+                  );
+                }}
+              >
+                <option value="" className="defaultSelect" selected disabled>
+                  Change status
+                </option>
+                <option value="pending">pending</option>
+                <option value="active">active</option>
+                <option value="complete">complete</option>
+              </select>
+              {isStable && check ? (
+                <i className="check">
+                  <FaCheck />;
+                </i>
+              ) : (
+                <button
+                  type="submit"
+                  className={!isStable && status ? "unstable" : "stable"}
+                  onClick={checkOut}
+                >
+                  <FaSync />
+                </button>
+              )}
+            </form>
+          ) : null}
 
           <div className="sep"></div>
         </div>
